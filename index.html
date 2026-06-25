@@ -6,7 +6,7 @@
 <title>Aidia — Company Profile</title>
 <meta name="description" content="Aidia is an AI consulting practice that builds AI systems delivering real operational ROI — not demos, not chatbots.">
 <meta property="og:title" content="Aidia — AI Department as a Service">
-<meta property="og:description" content="Most AI hands you a chat window. This hands you a workforce.">
+<meta property="og:description" content="Useful AI finishes the job. We build AI systems that deliver real operational ROI.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://profile.aidia.uk/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2315181d'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%237b6bf0' stroke-width='2.4'/%3E%3C/svg%3E">
@@ -21,7 +21,7 @@
   --hair-dark:#2b313b; --hair-light:#d6d4cd;
   --accent:#7b6bf0; --accent-soft:#8e80f3;
   --ok:#3a9f6f; --warn:#b5862a;
-  --maxw:1080px;
+  --maxw:1120px;
   --disp:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -31,16 +31,16 @@ body{background:var(--ink);color:var(--on-dark);font-family:var(--disp);font-siz
 ::selection{background:var(--accent);color:#fff}
 a{color:inherit;text-decoration:none}
 
-/* ===== deck ===== */
+/* deck */
 .deck{position:fixed;inset:0;overflow:hidden;cursor:pointer}
 .track{position:absolute;inset:0;transition:transform .66s cubic-bezier(.5,0,.12,1);will-change:transform}
 .slide{height:100svh;width:100%;display:flex;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-.slide .inner{margin:auto;width:100%;max-width:var(--maxw);padding:96px 32px}
+.slide .inner{margin:auto;width:100%;max-width:var(--maxw);padding:104px 40px}
 .slide.dark{background:var(--ink);color:var(--on-dark)}
 .slide.darker{background:var(--ink-2);color:var(--on-dark)}
 .slide.light{background:var(--paper);color:var(--on-light)}
 
-/* reveal — fires when slide gets .active */
+/* reveal */
 .r{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .slide.active .r{opacity:1;transform:none}
 .slide.active .r.d1{transition-delay:.08s}
@@ -48,106 +48,105 @@ a{color:inherit;text-decoration:none}
 .slide.active .r.d3{transition-delay:.24s}
 .slide.active .r.d4{transition-delay:.32s}
 .slide.active .r.d5{transition-delay:.40s}
-.slide.active .r.d6{transition-delay:.48s}
 
 /* type */
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin:0 0 34px;display:flex;align-items:center;gap:14px;color:var(--on-dark-mut)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin:0 0 38px;display:flex;align-items:center;gap:14px;color:var(--on-dark-mut)}
 .slide.light .eyebrow{color:var(--on-light-mut)}
 .eyebrow::before{content:"";width:30px;height:1px;background:var(--accent)}
-h1.hero{font-family:var(--disp);font-weight:300;font-size:clamp(44px,8.4vw,100px);line-height:.98;letter-spacing:-.035em;margin:0 0 28px;max-width:13ch}
-h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);line-height:1.05;letter-spacing:-.03em;margin:0 0 26px;max-width:20ch}
-.lede{font-size:clamp(18px,1.9vw,21px);font-weight:400;line-height:1.55;max-width:60ch;color:var(--on-light-soft)}
+h1.hero{font-family:var(--disp);font-weight:300;font-size:clamp(46px,8.6vw,104px);line-height:.98;letter-spacing:-.035em;margin:0 0 30px;max-width:13ch}
+h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(32px,5vw,64px);line-height:1.04;letter-spacing:-.03em;margin:0 0 30px;max-width:20ch}
+.lead-h{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.2vw,52px);line-height:1.04;letter-spacing:-.03em;margin:0 0 44px;max-width:18ch}
+.lede{font-size:clamp(18px,1.95vw,22px);font-weight:400;line-height:1.55;max-width:60ch;color:var(--on-light-soft)}
 .slide.dark .lede,.slide.darker .lede{color:var(--on-dark-soft)}
 .accent{color:var(--accent-soft)}
 .slide.light .accent{color:var(--accent)}
 
 /* hero */
-.hero-sub{font-size:clamp(18px,2vw,22px);color:var(--on-dark-soft);max-width:54ch;line-height:1.5;margin:0}
-.meta{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:46px;font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut)}
+.hero-sub{font-size:clamp(19px,2.1vw,24px);color:var(--on-dark-soft);max-width:54ch;line-height:1.5;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:48px;font-family:var(--mono);font-size:13px;color:var(--on-dark-mut)}
 .meta b{color:var(--on-dark-soft);font-weight:500}
-.tap-cue{font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut);margin-top:54px;display:flex;align-items:center;gap:10px}
+.tap-cue{font-family:var(--mono);font-size:13px;color:var(--on-dark-mut);margin-top:56px;display:flex;align-items:center;gap:10px}
 .tap-cue .key{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border:1px solid var(--hair-dark);border-radius:6px;color:var(--on-dark-soft)}
 
 /* belief */
-.belief{font-family:var(--disp);font-weight:300;font-size:clamp(28px,4.8vw,60px);line-height:1.1;letter-spacing:-.025em;max-width:22ch;margin:0}
-.belief .q{color:var(--on-dark-mut)}
+.belief{font-family:var(--disp);font-weight:300;font-size:clamp(40px,7vw,92px);line-height:1.02;letter-spacing:-.035em;max-width:16ch;margin:0 0 34px}
+.belief-sub{font-size:clamp(18px,2vw,23px);line-height:1.5;color:var(--on-dark-soft);max-width:52ch;margin:0}
+.belief-sub strong{color:var(--on-dark);font-weight:600}
 
 /* two-col overview */
-.two{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,84px);align-items:start}
-@media(max-width:820px){.two{grid-template-columns:1fr;gap:26px}}
-.two .k{font-family:var(--mono);font-size:12.5px;line-height:1.9;color:var(--on-light-mut)}
+.two{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(28px,6vw,84px);align-items:start}
+@media(max-width:820px){.two{grid-template-columns:1fr;gap:24px}}
+.two .k{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--on-light-mut)}
 
-/* capabilities list */
+/* capabilities */
 .caps{border-top:1px solid var(--hair-light)}
-.cap{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.5fr);gap:22px;padding:26px 0;border-bottom:1px solid var(--hair-light);align-items:baseline}
-.cap .num{font-family:var(--mono);font-size:13px;color:var(--accent)}
-.cap h3{font-family:var(--disp);font-weight:500;font-size:clamp(19px,2.3vw,26px);letter-spacing:-.02em;margin:0;color:var(--on-light)}
-.cap p{margin:0;color:var(--on-light-soft);font-size:15px;line-height:1.5}
-@media(max-width:720px){.cap{grid-template-columns:46px 1fr;gap:6px 16px}.cap p{grid-column:1/-1;padding-left:62px}}
+.cap{display:grid;grid-template-columns:60px minmax(0,1fr) minmax(0,1.3fr);gap:26px;padding:30px 0;border-bottom:1px solid var(--hair-light);align-items:baseline}
+.cap .num{font-family:var(--mono);font-size:14px;color:var(--accent)}
+.cap h3{font-family:var(--disp);font-weight:500;font-size:clamp(22px,2.8vw,34px);letter-spacing:-.02em;margin:0;color:var(--on-light)}
+.cap p{margin:0;color:var(--on-light-soft);font-size:clamp(15.5px,1.55vw,18.5px);line-height:1.5}
+@media(max-width:720px){.cap{grid-template-columns:44px 1fr;gap:6px 16px;padding:24px 0}.cap p{grid-column:1/-1;padding-left:60px}}
 
 /* approach */
-.appr{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--hair-dark);border:1px solid var(--hair-dark);border-radius:4px;overflow:hidden;margin-bottom:38px}
-.appr .a{background:var(--ink-2);padding:28px 24px}
-.appr .a .t{font-family:var(--disp);font-weight:600;font-size:17.5px;margin:0 0 10px;color:var(--on-dark)}
-.appr .a p{margin:0;font-size:14px;color:var(--on-dark-soft);line-height:1.55}
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-family:var(--mono);font-size:14px;color:var(--on-dark-soft)}
-.flow b{color:var(--on-dark);font-weight:500;font-family:var(--disp);font-size:16px}
-.flow .arr{color:var(--accent)}
+.appr{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--hair-dark);border:1px solid var(--hair-dark);border-radius:5px;overflow:hidden;margin-bottom:44px}
+.appr .a{background:var(--ink-2);padding:34px 30px}
+.appr .a .t{font-family:var(--disp);font-weight:600;font-size:clamp(20px,2.3vw,27px);margin:0 0 12px;color:var(--on-dark);letter-spacing:-.01em}
+.appr .a p{margin:0;font-size:clamp(15px,1.5vw,17px);color:var(--on-dark-soft);line-height:1.55}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:16px;font-family:var(--mono);font-size:15px;color:var(--on-dark-soft)}
+.flow b{color:var(--on-dark);font-weight:500;font-family:var(--disp);font-size:clamp(20px,2.4vw,28px)}
+.flow .arr{color:var(--accent);font-size:22px}
 
-/* portfolio / engagement lists */
-.subh{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-light-mut);margin:0 0 6px;font-weight:500}
+/* card grid (selected work + engagements) */
+.subh{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-light-mut);margin:0 0 20px;font-weight:500}
 .slide.dark .subh,.slide.darker .subh{color:var(--on-dark-mut)}
-.plist{border-top:1px solid var(--hair-light);margin-top:18px}
-.slide.dark .plist,.slide.darker .plist{border-top-color:var(--hair-dark)}
-.it{display:grid;grid-template-columns:130px minmax(0,1fr) auto;gap:10px 24px;padding:18px 0;border-bottom:1px solid var(--hair-light);align-items:baseline}
-.slide.dark .it,.slide.darker .it{border-bottom-color:var(--hair-dark)}
-.it .st{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px}
-.it .st.live{color:var(--ok)} .it .st.proto{color:var(--warn)}
-.it .st .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
-.it .bd{min-width:0}
-.it .nm{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 3px;color:var(--on-light)}
-.slide.dark .it .nm,.slide.darker .it .nm{color:var(--on-dark)}
-.it .ds{margin:0;font-size:14px;line-height:1.5;color:var(--on-light-soft)}
-.slide.dark .it .ds,.slide.darker .it .ds{color:var(--on-dark-soft)}
-.it .lk{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap}
-.it .who{font-family:var(--mono);font-size:12px;color:var(--on-light-mut);white-space:nowrap}
-.slide.dark .it .who{color:var(--on-dark-mut)}
-@media(max-width:680px){.it{grid-template-columns:1fr;gap:5px}.it .lk,.it .who{justify-self:start}}
+.cards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:720px){.cards2{grid-template-columns:1fr}}
+.cc{display:flex;flex-direction:column;border:1px solid var(--hair-light);background:var(--paper-2);border-radius:12px;padding:26px 28px;transition:border-color .2s,transform .2s}
+.cc:hover{transform:translateY(-3px)}
+a.cc:hover{border-color:var(--accent)}
+.slide.dark .cc,.slide.darker .cc{border-color:var(--hair-dark);background:var(--ink-2)}
+.cc .top{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;margin:0 0 14px}
+.cc .top.live{color:var(--ok)} .cc .top.proto{color:var(--warn)}
+.cc .top .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.cc .who{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--on-light-mut);margin:0 0 12px;text-transform:uppercase}
+.slide.dark .cc .who,.slide.darker .cc .who{color:var(--on-dark-mut)}
+.cc h4{font-family:var(--disp);font-weight:600;font-size:clamp(20px,2.2vw,27px);letter-spacing:-.015em;margin:0 0 9px;color:var(--on-light)}
+.slide.dark .cc h4,.slide.darker .cc h4{color:var(--on-dark)}
+.cc p{margin:0 0 16px;font-size:clamp(14.5px,1.5vw,17px);line-height:1.5;color:var(--on-light-soft);flex:1}
+.slide.dark .cc p,.slide.darker .cc p{color:var(--on-dark-soft)}
+.cc .lk{font-family:var(--mono);font-size:12.5px;color:var(--accent)}
 
-/* founder */
-.founder{display:grid;grid-template-columns:180px 1fr;gap:clamp(22px,5vw,56px);align-items:start}
-@media(max-width:680px){.founder{grid-template-columns:1fr;gap:18px}}
-.founder .role{font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut);line-height:1.9}
-.founder h3{font-family:var(--disp);font-weight:500;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin:0 0 16px;color:var(--on-dark)}
-.founder p{margin:0;color:var(--on-dark-soft);font-size:16px;line-height:1.6;max-width:58ch}
-.founder a{color:var(--accent-soft);border-bottom:1px solid transparent}
-.founder a:hover{border-bottom-color:var(--accent-soft)}
+/* where we fit */
+.situ{border-top:1px solid var(--hair-light)}
+.situ .s{display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--hair-light)}
+.situ .s .mk{font-family:var(--mono);font-size:20px;color:var(--accent);line-height:1}
+.situ .s p{margin:0;font-family:var(--disp);font-weight:400;font-size:clamp(19px,2.3vw,28px);line-height:1.25;letter-spacing:-.015em;color:var(--on-light)}
+.fit-foot{font-family:var(--mono);font-size:13px;color:var(--on-light-mut);margin:34px 0 0;line-height:1.7}
+.fit-foot a{color:var(--accent);border-bottom:1px solid transparent}
+.fit-foot a:hover{border-bottom-color:var(--accent)}
 
 /* contact */
-.contact{border-top:1px solid var(--hair-light);margin-top:6px}
-.contact a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 0;border-bottom:1px solid var(--hair-light);font-family:var(--mono);font-size:14px;color:var(--on-light);transition:padding-left .22s,color .22s}
-.contact a:hover{padding-left:12px;color:var(--accent)}
-.contact a .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-light-mut)}
-.legalnote{font-family:var(--mono);font-size:12px;color:var(--on-light-mut);margin:28px 0 0;line-height:1.6;max-width:64ch}
+.contact{border-top:1px solid var(--hair-dark);margin-top:4px}
+.contact a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:26px 0;border-bottom:1px solid var(--hair-dark);font-family:var(--mono);font-size:clamp(15px,1.7vw,19px);color:var(--on-dark);transition:padding-left .22s,color .22s}
+.contact a:hover{padding-left:14px;color:var(--accent-soft)}
+.contact a .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-mut)}
+.legalnote{font-family:var(--mono);font-size:13px;color:var(--on-dark-mut);margin:32px 0 0;line-height:1.6;max-width:64ch}
 
-/* ===== chrome ===== */
-.brand{position:fixed;top:26px;left:32px;z-index:30;font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.02em;color:var(--on-dark);mix-blend-mode:difference}
+/* chrome */
+.brand{position:fixed;top:28px;left:40px;z-index:30;font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.02em;color:#fff;mix-blend-mode:difference}
 .brand i{font-style:normal;color:var(--accent-soft)}
-.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:40;width:0;transition:width .5s cubic-bezier(.5,0,.12,1)}
-.ind{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:16px;mix-blend-mode:difference}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:40;width:0;transition:width .55s cubic-bezier(.5,0,.12,1)}
+.ind{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:16px;mix-blend-mode:difference}
 .dots{display:flex;gap:9px}
 .dot-btn{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:#fff;opacity:.32;cursor:pointer;transition:opacity .2s,transform .2s}
 .dot-btn.on{opacity:1;transform:scale(1.25)}
-.count{font-family:var(--mono);font-size:12px;color:#fff;opacity:.8}
-.edge{position:fixed;top:0;bottom:0;width:14vw;max-width:130px;z-index:25;border:0;background:transparent;color:#fff;font-size:30px;font-family:var(--disp);font-weight:300;opacity:0;cursor:pointer;transition:opacity .2s;mix-blend-mode:difference}
+.count{font-family:var(--mono);font-size:12.5px;color:#fff;opacity:.85}
+.edge{position:fixed;top:0;bottom:0;width:14vw;max-width:130px;z-index:25;border:0;background:transparent;color:#fff;font-size:32px;font-family:var(--disp);font-weight:300;opacity:0;cursor:pointer;transition:opacity .2s;mix-blend-mode:difference}
 .edge:hover{opacity:.55}
 .edge.left{left:0} .edge.right{right:0}
-@media(max-width:680px){.edge{display:none}.brand{top:20px;left:22px}.slide .inner{padding:84px 22px}}
+@media(max-width:680px){.edge{display:none}.brand{top:20px;left:22px}.slide .inner{padding:88px 24px}}
 
 @media(prefers-reduced-motion:reduce){
-  .track{transition:none}
-  .r{opacity:1;transform:none;transition:none}
-  .progress{transition:none}
+  .track{transition:none}.r{opacity:1;transform:none;transition:none}.progress{transition:none}
 }
 </style>
 </head>
@@ -192,7 +191,8 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     <section class="slide darker">
       <div class="inner">
         <p class="eyebrow r">02 — What we believe</p>
-        <p class="belief r d1"><span class="q">"</span>Most AI hands you a chat window. This hands you a <span class="accent">workforce</span>.<span class="q">"</span></p>
+        <h2 class="belief r d1">Useful AI finishes the job.</h2>
+        <p class="belief-sub r d2">Not a chatbot you have to babysit — a system that produces <strong>reliable results</strong>, with a human reviewing every output. If it can't deliver real ROI, we'll say so.</p>
       </div>
     </section>
 
@@ -200,11 +200,12 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     <section class="slide light">
       <div class="inner">
         <p class="eyebrow r">03 — What we do</p>
+        <h2 class="lead-h r">Four ways we put AI to work.</h2>
         <div class="caps">
-          <div class="cap r"><span class="num">01</span><h3>AI Systems &amp; Automation</h3><p>Automate repetitive work across functions — reporting, intelligence, data, system integration.</p></div>
-          <div class="cap r d1"><span class="num">02</span><h3>AI Agent Orchestration</h3><p>Orchestrate multiple AI agents to run workflows, not just answer questions.</p></div>
-          <div class="cap r d2"><span class="num">03</span><h3>AI Finance — "AI CFO"</h3><p>Financial visibility &amp; reconciliation; a track being validated via the presisi.ai prototype.</p></div>
-          <div class="cap r d3"><span class="num">04</span><h3>AI Diagnosis &amp; Problem-Framing</h3><p>Audit existing AI systems to find the root cause of weak ROI before any solution is chosen.</p></div>
+          <div class="cap r"><span class="num">01</span><h3>AI Systems &amp; Automation</h3><p>Automate repetitive work across functions — reporting, intelligence, data, and system integration.</p></div>
+          <div class="cap r d1"><span class="num">02</span><h3>AI Agent Orchestration</h3><p>Orchestrate multiple AI agents to run entire workflows, not just answer questions.</p></div>
+          <div class="cap r d2"><span class="num">03</span><h3>AI Finance — "AI CFO"</h3><p>Financial visibility &amp; reconciliation — a track we're validating with the presisi.ai prototype.</p></div>
+          <div class="cap r d3"><span class="num">04</span><h3>AI Diagnosis &amp; Problem-Framing</h3><p>Audit an existing AI setup to find the root cause of weak ROI before any solution is chosen.</p></div>
         </div>
       </div>
     </section>
@@ -213,10 +214,11 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     <section class="slide dark">
       <div class="inner">
         <p class="eyebrow r">04 — Our approach</p>
+        <h2 class="lead-h r">How we work.</h2>
         <div class="appr">
-          <div class="a r d1"><p class="t">Outcome-oriented</p><p>You pay for results, not hours or licenses. "Priced like an outcome. Honest about the limits."</p></div>
-          <div class="a r d2"><p class="t">Human-in-the-loop</p><p>"Nothing is replaced. Everything is accelerated — and a human always reviews."</p></div>
-          <div class="a r d3"><p class="t">Honest about limits</p><p>If a problem needs expertise outside our core, we say so upfront.</p></div>
+          <div class="a r d1"><p class="t">Outcome-oriented</p><p>You pay for results, not hours or licenses. Priced like an outcome — and honest about the limits.</p></div>
+          <div class="a r d2"><p class="t">Human-in-the-loop</p><p>Nothing is replaced. Everything is accelerated — and a human always reviews the result.</p></div>
+          <div class="a r d3"><p class="t">Honest about limits</p><p>If a problem needs expertise outside our core, we tell you upfront.</p></div>
         </div>
         <div class="flow r d4"><b>Audit</b><span class="arr">→</span><b>Build</b><span class="arr">→</span><b>Go live</b></div>
       </div>
@@ -226,13 +228,14 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     <section class="slide light">
       <div class="inner">
         <p class="eyebrow r">05 — Selected work</p>
+        <h2 class="lead-h r">What we've shipped.</h2>
         <p class="subh r">Aidia's own work &amp; properties</p>
-        <div class="plist">
-          <a class="it r" href="https://aidia.uk"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">aidia.uk</span><p class="ds">Aidia's main hub — the "AI Department as a Service" positioning.</p></span><span class="lk">aidia.uk →</span></a>
-          <a class="it r" href="https://lab.aidia.uk"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">Aidia Lab</span><p class="ds">Published research desk; flagship study "AI Finance Department" with transparent methodology &amp; sources.</p></span><span class="lk">lab.aidia.uk →</span></a>
-          <a class="it r" href="https://learn.aidia.uk"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">Aidia Academy</span><p class="ds">Course "Claude Code Mastery — with LEAD": 4 modules / 18 lessons, bilingual EN/ID.</p></span><span class="lk">learn.aidia.uk →</span></a>
-          <a class="it r" href="https://bangmarbot.github.io/ai-agency-ladder/"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">AI Agency Ladder</span><p class="ds">Field-note: from one AI assistant to orchestrating an agent squad (5 stages).</p></span><span class="lk">View →</span></a>
-          <div class="it"><span class="st proto"><span class="dot"></span>Prototype</span><span class="bd"><span class="nm">presisi.ai</span><p class="ds">An "AI CFO" read-only — connects to Mekari Jurnal → natural-language finance Q&amp;A, every number traceable. Built with a partner, in validation.</p></span><span class="lk">&nbsp;</span></div>
+        <div class="cards2">
+          <a class="cc r" href="https://aidia.uk"><span class="top live"><span class="dot"></span>Live</span><h4>aidia.uk</h4><p>Aidia's main hub — the "AI Department as a Service" positioning.</p><span class="lk">aidia.uk →</span></a>
+          <a class="cc r" href="https://lab.aidia.uk"><span class="top live"><span class="dot"></span>Live</span><h4>Aidia Lab</h4><p>A published research desk; flagship study "AI Finance Department" with transparent methodology and sources.</p><span class="lk">lab.aidia.uk →</span></a>
+          <a class="cc r" href="https://learn.aidia.uk"><span class="top live"><span class="dot"></span>Live</span><h4>Aidia Academy</h4><p>Course "Claude Code Mastery — with LEAD": 4 modules, 18 lessons, bilingual EN/ID.</p><span class="lk">learn.aidia.uk →</span></a>
+          <a class="cc r" href="https://bangmarbot.github.io/ai-agency-ladder/"><span class="top live"><span class="dot"></span>Live</span><h4>AI Agency Ladder</h4><p>A field-note on going from one AI assistant to orchestrating an agent squad.</p><span class="lk">View →</span></a>
+          <div class="cc r"><span class="top proto"><span class="dot"></span>Prototype</span><h4>presisi.ai</h4><p>An "AI CFO" (read-only) that connects to your accounting software and ERP, then answers finance questions in plain language — every number traceable to its source. Built with a partner; currently in validation.</p></div>
         </div>
       </div>
     </section>
@@ -241,28 +244,29 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     <section class="slide dark">
       <div class="inner">
         <p class="eyebrow r">06 — Client engagements</p>
+        <h2 class="lead-h r">Selected client outcomes.</h2>
         <p class="subh r">Client work · anonymized</p>
-        <div class="plist">
-          <div class="it r"><span class="bd"><span class="nm">Sales reporting automation</span><p class="ds">Daily reports that were manual now ship automatically overnight.</p></span><span class="who">A national EV company</span></div>
-          <div class="it r"><span class="bd"><span class="nm">Community sentiment intelligence</span><p class="ds">1,729 mentions analyzed in ~1 hour → 8 product insights + 4 critical alerts, every recommendation with an owner &amp; deadline.</p></span><span class="who">A leading EV brand · Indonesia</span></div>
-          <div class="it r"><span class="bd"><span class="nm">Operational diagnosis</span><p class="ds">Mapped the inquiry → SO → invoice flow + a 3-phase digitalization roadmap.</p></span><span class="who">Heavy-equipment rental · Cikarang</span></div>
-          <div class="it r"><span class="bd"><span class="nm">Contract lifecycle &amp; permit screening</span><p class="ds">Contract management + permit-eligibility screening.</p></span><span class="who">An automotive company</span></div>
-          <div class="it r"><span class="bd"><span class="nm">Data &amp; BI integration</span><p class="ds">Cross-system pipeline from ERP to BI visualization.</p></span><span class="who">An automotive company</span></div>
+        <div class="cards2">
+          <div class="cc r"><span class="who">A leading EV brand · Indonesia</span><h4>Community sentiment intelligence</h4><p>1,729 mentions analyzed in ~1 hour → 8 product insights and 4 critical alerts, each recommendation with an owner and a deadline.</p></div>
+          <div class="cc r"><span class="who">A national EV company</span><h4>Sales reporting automation</h4><p>Daily reports that used to be manual now ship automatically, overnight.</p></div>
+          <div class="cc r"><span class="who">Heavy-equipment rental · Cikarang</span><h4>Operational diagnosis</h4><p>Mapped the inquiry → SO → invoice flow and laid out a 3-phase digitalization roadmap.</p></div>
+          <div class="cc r"><span class="who">An automotive company</span><h4>Contract &amp; permit screening</h4><p>Contract lifecycle management with automated permit-eligibility screening.</p></div>
+          <div class="cc r"><span class="who">An automotive company</span><h4>Data &amp; BI integration</h4><p>A cross-system pipeline from ERP through to BI visualization.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- 8 · FOUNDER -->
+    <!-- 8 · WHERE WE FIT -->
     <section class="slide light">
       <div class="inner">
-        <p class="eyebrow r">07 — Founder</p>
-        <div class="founder">
-          <div class="role r" style="color:var(--on-light-mut)">Founder<br>&amp; Principal</div>
-          <div class="r d1">
-            <h3 style="color:var(--on-light)">Muhamad Muslih</h3>
-            <p style="color:var(--on-light-soft)">A Product Manager who builds with AI agents every day — with a background in digital products &amp; automation across mobility, fintech, banking, SaaS, and automotive. Aidia is an extension of that practice. Full profile: <a href="https://muslih.aidia.uk">muslih.aidia.uk</a>.</p>
-          </div>
+        <p class="eyebrow r">07 — Where we fit</p>
+        <h2 class="lead-h r">When to bring us in.</h2>
+        <div class="situ">
+          <div class="s r"><span class="mk">→</span><p>You've already deployed AI — but it isn't delivering ROI yet.</p></div>
+          <div class="s r d1"><span class="mk">→</span><p>Repetitive work keeps piling up: reporting, reconciliation, data, contracts.</p></div>
+          <div class="s r d2"><span class="mk">→</span><p>You want AI in your operations — but it has to actually work, and be trusted.</p></div>
         </div>
+        <p class="fit-foot r d3">Founder-led, and built by a practitioner who works with AI agents every day. More at <a href="https://muslih.aidia.uk">muslih.aidia.uk</a>.</p>
       </div>
     </section>
 
@@ -271,20 +275,19 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
       <div class="inner">
         <p class="eyebrow r">08 — Contact</p>
         <h2 class="big r d1">Let's talk about work that actually <span class="accent">gets done</span>.</h2>
-        <div class="contact r d2" style="border-top-color:var(--hair-dark)">
-          <a href="https://aidia.uk" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">Web</span><span>aidia.uk →</span></a>
-          <a href="mailto:hello@aidia.uk" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">Email</span><span>hello@aidia.uk →</span></a>
-          <a href="https://wa.me/6281310069661" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">WhatsApp</span><span>+62 813-1006-9661 →</span></a>
-          <a href="https://linkedin.com/in/muhamad-muslihh" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">LinkedIn</span><span>muhamad-muslihh →</span></a>
+        <div class="contact r d2">
+          <a href="https://aidia.uk"><span class="lbl">Web</span><span>aidia.uk →</span></a>
+          <a href="mailto:hello@aidia.uk"><span class="lbl">Email</span><span>hello@aidia.uk →</span></a>
+          <a href="https://wa.me/6281310069661"><span class="lbl">WhatsApp</span><span>+62 813-1006-9661 →</span></a>
+          <a href="https://linkedin.com/in/muhamad-muslihh"><span class="lbl">LinkedIn</span><span>muhamad-muslihh →</span></a>
         </div>
-        <p class="legalnote r d3" style="color:var(--on-dark-mut)">For procurement / vendor registration (legal entity, NPWP, business address), entity details are available on request. &nbsp;·&nbsp; Last updated 25 June 2026.</p>
+        <p class="legalnote r d3">For procurement / vendor registration (legal entity, NPWP, business address), entity details are available on request.</p>
       </div>
     </section>
 
   </div><!-- /track -->
 </div><!-- /deck -->
 
-<!-- chrome -->
 <button class="edge left" data-no-advance aria-label="Previous" id="prev">‹</button>
 <button class="edge right" data-no-advance aria-label="Next" id="next">›</button>
 <div class="ind" data-no-advance>
@@ -299,9 +302,7 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
       dotsEl=document.getElementById('dots');
   var slides=Array.prototype.slice.call(track.querySelectorAll('.slide'));
   var n=slides.length, i=0;
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // build dots
   slides.forEach(function(_,idx){
     var b=document.createElement('button');
     b.className='dot-btn'+(idx===0?' on':''); b.type='button';
@@ -317,20 +318,17 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     dotBtns.forEach(function(d,idx){d.classList.toggle('on',idx===i);});
     countEl.textContent=(i+1)+' / '+n;
     progress.style.width=((i+1)/n*100)+'%';
-    // reset scroll of the freshly-shown slide
     slides[i].scrollTop=0;
   }
   function go(t){ i=Math.max(0,Math.min(n-1,t)); render(); }
   function next(){ go(i+1); }
   function prev(){ go(i-1); }
 
-  // click / tap to advance (left 22% = back); ignore interactive bits
   deck.addEventListener('click',function(e){
     if(e.target.closest('a,button,[data-no-advance]')) return;
     if(e.clientX < window.innerWidth*0.22) prev(); else next();
   });
 
-  // keyboard
   window.addEventListener('keydown',function(e){
     if(e.key===' '||e.key==='Enter'||e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();next();}
     else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='Backspace'||e.key==='PageUp'){e.preventDefault();prev();}
@@ -338,11 +336,9 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     else if(e.key==='End'){e.preventDefault();go(n-1);}
   });
 
-  // edge buttons
   document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();next();});
   document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();prev();});
 
-  // touch swipe (vertical-friendly: horizontal swipe navigates; vertical lets content scroll)
   var ts=null;
   deck.addEventListener('touchstart',function(e){var t=e.touches[0];ts={x:t.clientX,y:t.clientY};},{passive:true});
   deck.addEventListener('touchend',function(e){
@@ -350,17 +346,15 @@ h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);
     var dx=t.clientX-ts.x, dy=t.clientY-ts.y; ts=null;
     if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ if(dx<0) next(); else prev(); }
     else if(Math.abs(dy)>70 && Math.abs(dy)>Math.abs(dx)){
-      // only page-flip on swipe when the current slide isn't scrolled
       var s=slides[i];
       if(s.scrollHeight<=s.clientHeight+4){ if(dy<0) next(); else prev(); }
     }
   },{passive:true});
 
-  // wheel — flip pages when slide content fits; otherwise let it scroll
   var wlock=false;
   deck.addEventListener('wheel',function(e){
     var s=slides[i], fits=s.scrollHeight<=s.clientHeight+4;
-    if(!fits) return; // allow native scroll on tall slides
+    if(!fits) return;
     if(Math.abs(e.deltaY)<8) return;
     if(wlock) return; wlock=true; setTimeout(function(){wlock=false;},680);
     if(e.deltaY>0) next(); else prev();
