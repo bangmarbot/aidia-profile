@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aidia — Company Profile</title>
 <meta name="description" content="Aidia is an AI consulting practice that builds AI systems delivering real operational ROI — not demos, not chatbots.">
 <meta property="og:title" content="Aidia — AI Department as a Service">
-<meta property="og:description" content="An AI consulting practice that builds AI systems delivering real operational ROI.">
+<meta property="og:description" content="Most AI hands you a chat window. This hands you a workforce.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://profile.aidia.uk/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2315181d'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%237b6bf0' stroke-width='2.4'/%3E%3C/svg%3E">
@@ -15,310 +15,358 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* monochrome institutional — Palantir-adjacent */
-  --ink:#15181d;          /* near-black */
-  --ink-2:#1c2027;        /* charcoal band */
-  --ink-soft:#2a2f38;
-  --paper:#ecebe7;        /* off-white band */
-  --paper-2:#f4f3ef;
-  --on-dark:#eef0f3;
-  --on-dark-soft:#aeb4c0;
-  --on-dark-mut:#7b8290;
-  --on-light:#15181d;
-  --on-light-soft:#41454d;
-  --on-light-mut:#797d85;
-  --hair-dark:#2b313b;
-  --hair-light:#d6d4cd;
-  --accent:#7b6bf0;       /* single muted-violet accent, used sparingly */
-  --accent-soft:#8e80f3;
-  --ok:#3a9f6f;
-  --warn:#b5862a;
-  --maxw:1160px;
+  --ink:#15181d; --ink-2:#1b1f26; --paper:#ecebe7; --paper-2:#f4f3ef;
+  --on-dark:#eef0f3; --on-dark-soft:#aeb4c0; --on-dark-mut:#7b8290;
+  --on-light:#15181d; --on-light-soft:#41454d; --on-light-mut:#797d85;
+  --hair-dark:#2b313b; --hair-light:#d6d4cd;
+  --accent:#7b6bf0; --accent-soft:#8e80f3;
+  --ok:#3a9f6f; --warn:#b5862a;
+  --maxw:1080px;
   --disp:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ink);color:var(--on-dark);font-family:var(--disp);font-size:17px;line-height:1.65;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html,body{margin:0;height:100%;overflow:hidden}
+body{background:var(--ink);color:var(--on-dark);font-family:var(--disp);font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 ::selection{background:var(--accent);color:#fff}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 a{color:inherit;text-decoration:none}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* ===== deck ===== */
+.deck{position:fixed;inset:0;overflow:hidden;cursor:pointer}
+.track{position:absolute;inset:0;transition:transform .66s cubic-bezier(.5,0,.12,1);will-change:transform}
+.slide{height:100svh;width:100%;display:flex;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.slide .inner{margin:auto;width:100%;max-width:var(--maxw);padding:96px 32px}
+.slide.dark{background:var(--ink);color:var(--on-dark)}
+.slide.darker{background:var(--ink-2);color:var(--on-dark)}
+.slide.light{background:var(--paper);color:var(--on-light)}
 
-/* ===== header ===== */
-.head{position:fixed;top:0;left:0;right:0;z-index:40;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
-.head .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-.head.solid{background:rgba(21,24,29,.86);backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid var(--hair-dark)}
-.wm{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.02em;color:var(--on-dark)}
-.wm i{font-style:normal;color:var(--accent-soft)}
-.head .nav{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--on-dark-mut);display:flex;gap:26px}
-.head .nav a{transition:color .2s}
-.head .nav a:hover{color:var(--on-dark)}
-@media(max-width:680px){.head .nav{display:none}}
+/* reveal — fires when slide gets .active */
+.r{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.slide.active .r{opacity:1;transform:none}
+.slide.active .r.d1{transition-delay:.08s}
+.slide.active .r.d2{transition-delay:.16s}
+.slide.active .r.d3{transition-delay:.24s}
+.slide.active .r.d4{transition-delay:.32s}
+.slide.active .r.d5{transition-delay:.40s}
+.slide.active .r.d6{transition-delay:.48s}
 
-/* ===== bands ===== */
-.band{padding:clamp(78px,12vh,140px) 0;border-bottom:1px solid var(--hair-dark)}
-.band.light{background:var(--paper);color:var(--on-light);border-bottom:1px solid var(--hair-light)}
-.band.dark{background:var(--ink)}
-.band.darker{background:var(--ink-2)}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin:0 0 34px;display:flex;align-items:center;gap:14px}
-.band.dark .eyebrow,.band.darker .eyebrow{color:var(--on-dark-mut)}
-.band.light .eyebrow{color:var(--on-light-mut)}
+/* type */
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin:0 0 34px;display:flex;align-items:center;gap:14px;color:var(--on-dark-mut)}
+.slide.light .eyebrow{color:var(--on-light-mut)}
 .eyebrow::before{content:"";width:30px;height:1px;background:var(--accent)}
-
-/* display type */
-h1.hero{font-family:var(--disp);font-weight:300;font-size:clamp(44px,8.4vw,104px);line-height:.98;letter-spacing:-.035em;margin:0 0 30px;max-width:13ch}
-h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.6vw,58px);line-height:1.06;letter-spacing:-.03em;margin:0 0 26px;max-width:20ch}
-.lede{font-size:clamp(18px,1.9vw,21px);font-weight:400;line-height:1.55;max-width:60ch}
-.band.dark .lede,.band.darker .lede{color:var(--on-dark-soft)}
-.band.light .lede{color:var(--on-light-soft)}
+h1.hero{font-family:var(--disp);font-weight:300;font-size:clamp(44px,8.4vw,100px);line-height:.98;letter-spacing:-.035em;margin:0 0 28px;max-width:13ch}
+h2.big{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.8vw,60px);line-height:1.05;letter-spacing:-.03em;margin:0 0 26px;max-width:20ch}
+.lede{font-size:clamp(18px,1.9vw,21px);font-weight:400;line-height:1.55;max-width:60ch;color:var(--on-light-soft)}
+.slide.dark .lede,.slide.darker .lede{color:var(--on-dark-soft)}
 .accent{color:var(--accent-soft)}
-.band.light .accent{color:var(--accent)}
+.slide.light .accent{color:var(--accent)}
 
-/* ===== HERO ===== */
-.hero-band{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(120% 90% at 78% 8%,#20242c 0%,var(--ink) 55%)}
-.hero-band .meta{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:46px;font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut);letter-spacing:.02em}
-.hero-band .meta b{color:var(--on-dark-soft);font-weight:500}
+/* hero */
 .hero-sub{font-size:clamp(18px,2vw,22px);color:var(--on-dark-soft);max-width:54ch;line-height:1.5;margin:0}
-.scrollcue{position:absolute;left:28px;bottom:30px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark-mut);display:flex;align-items:center;gap:12px}
-.scrollcue .ln{width:48px;height:1px;background:var(--on-dark-mut);position:relative;overflow:hidden}
-.scrollcue .ln::after{content:"";position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);animation:sweep 2.4s ease-in-out infinite}
-@keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
-@media(prefers-reduced-motion:reduce){.scrollcue .ln::after{animation:none}}
+.meta{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:46px;font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut)}
+.meta b{color:var(--on-dark-soft);font-weight:500}
+.tap-cue{font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut);margin-top:54px;display:flex;align-items:center;gap:10px}
+.tap-cue .key{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border:1px solid var(--hair-dark);border-radius:6px;color:var(--on-dark-soft)}
 
-/* overview two-col */
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,6vw,90px);align-items:start}
-@media(max-width:820px){.two{grid-template-columns:1fr;gap:30px}}
-.two .k{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;line-height:1.9}
-.band.light .two .k{color:var(--on-light-mut)}
-.two p{margin:0 0 18px}.two p:last-child{margin:0}
-
-/* belief statement */
-.belief{font-family:var(--disp);font-weight:300;font-size:clamp(28px,4.4vw,56px);line-height:1.1;letter-spacing:-.025em;max-width:24ch;margin:0}
+/* belief */
+.belief{font-family:var(--disp);font-weight:300;font-size:clamp(28px,4.8vw,60px);line-height:1.1;letter-spacing:-.025em;max-width:22ch;margin:0}
 .belief .q{color:var(--on-dark-mut)}
 
-/* capabilities — institutional list */
+/* two-col overview */
+.two{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,84px);align-items:start}
+@media(max-width:820px){.two{grid-template-columns:1fr;gap:26px}}
+.two .k{font-family:var(--mono);font-size:12.5px;line-height:1.9;color:var(--on-light-mut)}
+
+/* capabilities list */
 .caps{border-top:1px solid var(--hair-light)}
-.cap{display:grid;grid-template-columns:90px minmax(0,1fr) minmax(0,1.4fr);gap:24px;padding:30px 0;border-bottom:1px solid var(--hair-light);align-items:baseline;transition:padding-left .25s ease}
-.cap:hover{padding-left:10px}
+.cap{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.5fr);gap:22px;padding:26px 0;border-bottom:1px solid var(--hair-light);align-items:baseline}
 .cap .num{font-family:var(--mono);font-size:13px;color:var(--accent)}
-.cap h3{font-family:var(--disp);font-weight:500;font-size:clamp(20px,2.4vw,27px);letter-spacing:-.02em;margin:0;color:var(--on-light)}
-.cap p{margin:0;color:var(--on-light-soft);font-size:15.5px;line-height:1.55}
-@media(max-width:760px){.cap{grid-template-columns:54px 1fr;gap:8px 18px}.cap p{grid-column:1/-1;padding-left:72px}}
+.cap h3{font-family:var(--disp);font-weight:500;font-size:clamp(19px,2.3vw,26px);letter-spacing:-.02em;margin:0;color:var(--on-light)}
+.cap p{margin:0;color:var(--on-light-soft);font-size:15px;line-height:1.5}
+@media(max-width:720px){.cap{grid-template-columns:46px 1fr;gap:6px 16px}.cap p{grid-column:1/-1;padding-left:62px}}
 
 /* approach */
-.appr{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--hair-dark);border:1px solid var(--hair-dark);border-radius:4px;overflow:hidden;margin-bottom:40px}
-.appr .a{background:var(--ink-2);padding:30px 26px}
-.appr .a .t{font-family:var(--disp);font-weight:600;font-size:18px;margin:0 0 10px;color:var(--on-dark)}
-.appr .a p{margin:0;font-size:14.5px;color:var(--on-dark-soft);line-height:1.55}
+.appr{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--hair-dark);border:1px solid var(--hair-dark);border-radius:4px;overflow:hidden;margin-bottom:38px}
+.appr .a{background:var(--ink-2);padding:28px 24px}
+.appr .a .t{font-family:var(--disp);font-weight:600;font-size:17.5px;margin:0 0 10px;color:var(--on-dark)}
+.appr .a p{margin:0;font-size:14px;color:var(--on-dark-soft);line-height:1.55}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-family:var(--mono);font-size:14px;color:var(--on-dark-soft)}
 .flow b{color:var(--on-dark);font-weight:500;font-family:var(--disp);font-size:16px}
 .flow .arr{color:var(--accent)}
 
-/* track record */
-.subh{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-light-mut);margin:0 0 22px;font-weight:500}
-.work{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:var(--hair-light);border:1px solid var(--hair-light);border-radius:4px;overflow:hidden;margin:0 0 50px}
-.w{background:var(--paper-2);padding:28px 26px;display:flex;flex-direction:column;transition:background .2s}
-.w:hover{background:#fff}
-.w .st{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px;margin:0 0 16px}
-.w .st.live{color:var(--ok)}.w .st.proto{color:var(--warn)}
-.w .st .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
-.w h4{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.01em;margin:0 0 9px;color:var(--on-light)}
-.w p{margin:0 0 16px;font-size:14.5px;color:var(--on-light-soft);line-height:1.55;flex:1}
-.w .go{font-family:var(--mono);font-size:12.5px;color:var(--accent)}
-.w.more{justify-content:center;background:var(--paper);border:none}
-.w.more h4{color:var(--on-light-soft)}
-.w.more p{flex:none;color:var(--on-light-mut)}
-.w.more:hover{background:#fff}
-.eng{list-style:none;padding:0;margin:0;border-top:1px solid var(--hair-light)}
-.eng li{padding:22px 0;border-bottom:1px solid var(--hair-light);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:8px 30px;align-items:baseline}
-.eng li .desc{color:var(--on-light-soft);font-size:15.5px;line-height:1.5}
-.eng li .desc b{color:var(--on-light);font-weight:600}
-.eng li .who{font-family:var(--mono);font-size:12.5px;color:var(--on-light-mut)}
-@media(max-width:680px){.eng li{grid-template-columns:1fr;gap:6px}}
+/* portfolio / engagement lists */
+.subh{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-light-mut);margin:0 0 6px;font-weight:500}
+.slide.dark .subh,.slide.darker .subh{color:var(--on-dark-mut)}
+.plist{border-top:1px solid var(--hair-light);margin-top:18px}
+.slide.dark .plist,.slide.darker .plist{border-top-color:var(--hair-dark)}
+.it{display:grid;grid-template-columns:130px minmax(0,1fr) auto;gap:10px 24px;padding:18px 0;border-bottom:1px solid var(--hair-light);align-items:baseline}
+.slide.dark .it,.slide.darker .it{border-bottom-color:var(--hair-dark)}
+.it .st{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px}
+.it .st.live{color:var(--ok)} .it .st.proto{color:var(--warn)}
+.it .st .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.it .bd{min-width:0}
+.it .nm{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 3px;color:var(--on-light)}
+.slide.dark .it .nm,.slide.darker .it .nm{color:var(--on-dark)}
+.it .ds{margin:0;font-size:14px;line-height:1.5;color:var(--on-light-soft)}
+.slide.dark .it .ds,.slide.darker .it .ds{color:var(--on-dark-soft)}
+.it .lk{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap}
+.it .who{font-family:var(--mono);font-size:12px;color:var(--on-light-mut);white-space:nowrap}
+.slide.dark .it .who{color:var(--on-dark-mut)}
+@media(max-width:680px){.it{grid-template-columns:1fr;gap:5px}.it .lk,.it .who{justify-self:start}}
 
 /* founder */
-.founder{display:grid;grid-template-columns:200px 1fr;gap:clamp(24px,5vw,60px);align-items:start}
-@media(max-width:680px){.founder{grid-template-columns:1fr;gap:20px}}
+.founder{display:grid;grid-template-columns:180px 1fr;gap:clamp(22px,5vw,56px);align-items:start}
+@media(max-width:680px){.founder{grid-template-columns:1fr;gap:18px}}
 .founder .role{font-family:var(--mono);font-size:12.5px;color:var(--on-dark-mut);line-height:1.9}
-.founder h3{font-family:var(--disp);font-weight:500;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;margin:0 0 16px;color:var(--on-dark)}
-.founder p{margin:0;color:var(--on-dark-soft);font-size:16px;line-height:1.6;max-width:60ch}
-.founder a{color:var(--accent-soft);border-bottom:1px solid transparent;transition:border-color .2s}
-.founder a:hover{border-color:var(--accent-soft)}
+.founder h3{font-family:var(--disp);font-weight:500;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin:0 0 16px;color:var(--on-dark)}
+.founder p{margin:0;color:var(--on-dark-soft);font-size:16px;line-height:1.6;max-width:58ch}
+.founder a{color:var(--accent-soft);border-bottom:1px solid transparent}
+.founder a:hover{border-bottom-color:var(--accent-soft)}
 
 /* contact */
-.contact{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--hair-light)}
-.contact a{flex:1 1 200px;padding:26px 4px;border-bottom:1px solid var(--hair-light);font-family:var(--mono);font-size:14px;color:var(--on-light);display:flex;align-items:center;justify-content:space-between;gap:14px;transition:padding-left .22s,color .22s}
-.contact a:hover{padding-left:14px;color:var(--accent)}
+.contact{border-top:1px solid var(--hair-light);margin-top:6px}
+.contact a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 0;border-bottom:1px solid var(--hair-light);font-family:var(--mono);font-size:14px;color:var(--on-light);transition:padding-left .22s,color .22s}
+.contact a:hover{padding-left:12px;color:var(--accent)}
 .contact a .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-light-mut)}
-.legalnote{font-family:var(--mono);font-size:12.5px;color:var(--on-light-mut);margin:30px 0 0;line-height:1.6;max-width:64ch}
+.legalnote{font-family:var(--mono);font-size:12px;color:var(--on-light-mut);margin:28px 0 0;line-height:1.6;max-width:64ch}
 
-/* footer */
-.foot{background:var(--ink);padding:64px 0 56px}
-.foot .big{font-family:var(--disp);font-weight:300;font-size:clamp(24px,3.6vw,42px);line-height:1.12;letter-spacing:-.025em;color:var(--on-dark);max-width:22ch;margin:0 0 44px}
-.foot .row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;border-top:1px solid var(--hair-dark);padding-top:26px}
-.foot .row .upd{font-family:var(--mono);font-size:12px;color:var(--on-dark-mut)}
-.foot .row .upd b{color:var(--on-dark-soft);font-weight:500}
+/* ===== chrome ===== */
+.brand{position:fixed;top:26px;left:32px;z-index:30;font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.02em;color:var(--on-dark);mix-blend-mode:difference}
+.brand i{font-style:normal;color:var(--accent-soft)}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:40;width:0;transition:width .5s cubic-bezier(.5,0,.12,1)}
+.ind{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:16px;mix-blend-mode:difference}
+.dots{display:flex;gap:9px}
+.dot-btn{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:#fff;opacity:.32;cursor:pointer;transition:opacity .2s,transform .2s}
+.dot-btn.on{opacity:1;transform:scale(1.25)}
+.count{font-family:var(--mono);font-size:12px;color:#fff;opacity:.8}
+.edge{position:fixed;top:0;bottom:0;width:14vw;max-width:130px;z-index:25;border:0;background:transparent;color:#fff;font-size:30px;font-family:var(--disp);font-weight:300;opacity:0;cursor:pointer;transition:opacity .2s;mix-blend-mode:difference}
+.edge:hover{opacity:.55}
+.edge.left{left:0} .edge.right{right:0}
+@media(max-width:680px){.edge{display:none}.brand{top:20px;left:22px}.slide .inner{padding:84px 22px}}
+
+@media(prefers-reduced-motion:reduce){
+  .track{transition:none}
+  .r{opacity:1;transform:none;transition:none}
+  .progress{transition:none}
+}
 </style>
 </head>
 <body>
 
-<header class="head" id="head">
-  <div class="wrap">
-    <span class="wm">aid<i>i</i>a</span>
-    <nav class="nav">
-      <a href="#overview">Overview</a>
-      <a href="#work">Track Record</a>
-      <a href="#contact">Contact</a>
-      <a href="https://aidia.uk">aidia.uk ↗</a>
-    </nav>
-  </div>
-</header>
+<div class="progress" id="progress"></div>
+<div class="brand">aid<i>i</i>a</div>
 
-<!-- ===== HERO ===== -->
-<section class="hero-band">
-  <div class="wrap">
-    <p class="eyebrow">Aidia · Company Profile</p>
-    <h1 class="hero">AI Department as a Service.</h1>
-    <p class="hero-sub">Kami membangun sistem AI yang mengerjakan pekerjaan nyata — dan memberi ROI. Bukan demo. Bukan chatbot.</p>
-    <div class="meta">
-      <span><b>Praktik</b> &nbsp;Konsultan AI</span>
-      <span><b>Model</b> &nbsp;Founder-led · outcome-priced</span>
-      <span><b>Web</b> &nbsp;aidia.uk</span>
-    </div>
-  </div>
-  <div class="scrollcue"><span class="ln"></span><span>Scroll</span></div>
-</section>
+<div class="deck" id="deck">
+  <div class="track" id="track">
 
-<!-- ===== OVERVIEW ===== -->
-<section class="band light" id="overview">
-  <div class="wrap">
-    <p class="eyebrow reveal">01 — Overview</p>
-    <div class="two">
-      <div class="k reveal">Siapa kami<br>What we are</div>
-      <div class="reveal d1">
-        <h2 class="big" style="margin-bottom:30px">Sebuah praktik konsultan AI yang membuat AI <span class="accent">benar-benar bekerja</span>.</h2>
-        <p class="lede">Banyak bisnis sudah punya — atau ingin punya — AI, tapi terjebak: hasilnya belum bisa dipercaya, masih butuh pengecekan manual, atau sistemnya belum stabil. Aidia masuk untuk mencari tahu <strong>kenapa</strong>, lalu membangun sistem AI yang memberi hasil operasional yang nyata dan terukur.</p>
+    <!-- 1 · HERO -->
+    <section class="slide dark active">
+      <div class="inner">
+        <p class="eyebrow r">Aidia · Company Profile</p>
+        <h1 class="hero r d1">AI Department as a Service.</h1>
+        <p class="hero-sub r d2">We build AI systems that do real operational work — and deliver the ROI. Not demos. Not chatbots.</p>
+        <div class="meta r d3">
+          <span><b>Practice</b> &nbsp;AI Consulting</span>
+          <span><b>Model</b> &nbsp;Founder-led · outcome-priced</span>
+          <span><b>Web</b> &nbsp;aidia.uk</span>
+        </div>
+        <p class="tap-cue r d4">Tap, click, or press <span class="key">→</span> to continue</p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===== BELIEF ===== -->
-<section class="band darker">
-  <div class="wrap">
-    <p class="eyebrow reveal">02 — What we believe</p>
-    <p class="belief reveal d1"><span class="q">"</span>Most AI hands you a chat window.<br>This hands you a <span class="accent">workforce</span>.<span class="q">"</span></p>
-  </div>
-</section>
-
-<!-- ===== WHAT WE DO ===== -->
-<section class="band light">
-  <div class="wrap">
-    <p class="eyebrow reveal">03 — What we do</p>
-    <div class="caps">
-      <div class="cap reveal"><span class="num">01</span><h3>AI Systems &amp; Automation</h3><p>Mengotomasi pekerjaan repetitif lintas fungsi — laporan, intelijen, data, integrasi sistem.</p></div>
-      <div class="cap reveal"><span class="num">02</span><h3>AI Agent Orchestration</h3><p>Mengorkestrasi beberapa AI agent untuk menjalankan alur kerja, bukan sekadar menjawab pertanyaan.</p></div>
-      <div class="cap reveal"><span class="num">03</span><h3>AI Finance — "AI CFO"</h3><p>Visibilitas &amp; rekonsiliasi keuangan; track yang sedang divalidasi via prototipe presisi.ai.</p></div>
-      <div class="cap reveal"><span class="num">04</span><h3>AI Diagnosis &amp; Problem-Framing</h3><p>Audit sistem AI yang sudah berjalan untuk menemukan akar masalah ROI sebelum solusi ditentukan.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== APPROACH ===== -->
-<section class="band dark">
-  <div class="wrap">
-    <p class="eyebrow reveal">04 — Our approach</p>
-    <div class="appr">
-      <div class="a reveal d1"><p class="t">Outcome-oriented</p><p>Anda membayar hasil, bukan jam atau lisensi. "Priced like an outcome. Honest about the limits."</p></div>
-      <div class="a reveal d2"><p class="t">Human-in-the-loop</p><p>"Nothing is replaced. Everything is accelerated — and a human always reviews."</p></div>
-      <div class="a reveal d3"><p class="t">Jujur soal batas</p><p>Kalau sebuah masalah butuh spesialis di luar kompetensi inti kami, kami katakan dari awal.</p></div>
-    </div>
-    <div class="flow reveal"><b>Audit</b><span class="arr">→</span><b>Build</b><span class="arr">→</span><b>Go live</b></div>
-  </div>
-</section>
-
-<!-- ===== TRACK RECORD ===== -->
-<section class="band light" id="work">
-  <div class="wrap">
-    <p class="eyebrow reveal">05 — Track record</p>
-
-    <p class="subh reveal">Karya &amp; properti Aidia</p>
-    <div class="work">
-      <div class="w reveal"><span class="st live"><span class="dot"></span>Live</span><h4>aidia.uk</h4><p>Hub utama Aidia — positioning "AI Department as a Service".</p><a class="go" href="https://aidia.uk">aidia.uk →</a></div>
-      <div class="w reveal"><span class="st live"><span class="dot"></span>Live</span><h4>Aidia Lab</h4><p>Riset desk terpublikasi; studi "AI Finance Department" dengan metodologi &amp; sumber transparan.</p><a class="go" href="https://lab.aidia.uk">lab.aidia.uk →</a></div>
-      <div class="w reveal"><span class="st live"><span class="dot"></span>Live</span><h4>Aidia Academy</h4><p>Course "Claude Code Mastery — with LEAD": 4 modul / 18 lesson, bilingual ID/EN.</p><a class="go" href="https://learn.aidia.uk">learn.aidia.uk →</a></div>
-      <div class="w reveal"><span class="st live"><span class="dot"></span>Live</span><h4>AI Agency Ladder</h4><p>Field-note: dari 1 AI assistant ke orkestrasi agent squad (5 tahap).</p><a class="go" href="https://bangmarbot.github.io/ai-agency-ladder/">Lihat →</a></div>
-      <div class="w reveal"><span class="st proto"><span class="dot"></span>Prototype</span><h4>presisi.ai</h4><p>Prototipe "AI CFO" read-only — connect Mekari Jurnal → Q&amp;A keuangan, tiap angka traceable. Dikembangkan bersama partner, tahap validasi.</p></div>
-      <a class="w more reveal" href="https://aidia.uk"><h4>Selengkapnya</h4><p>Estate &amp; karya Aidia lainnya di hub utama.</p><span class="go">aidia.uk →</span></a>
-    </div>
-
-    <p class="subh reveal">Engagement &amp; pekerjaan klien</p>
-    <ul class="eng">
-      <li class="reveal"><div class="desc"><b>Otomasi pelaporan penjualan</b> — laporan harian yang dulu manual kini terkirim otomatis semalaman.</div><div class="who">Sebuah perusahaan EV nasional</div></li>
-      <li class="reveal"><div class="desc"><b>Community sentiment intelligence</b> — 1.729 mention dianalisis dalam ~1 jam → 8 insight produk + 4 alert kritis, tiap rekomendasi ber-owner &amp; deadline.</div><div class="who">Sebuah brand EV terkemuka di Indonesia</div></li>
-      <li class="reveal"><div class="desc"><b>Diagnosis operasional</b> — pemetaan alur inquiry → SO → invoice + roadmap 3-fase digitalisasi.</div><div class="who">Sebuah bisnis rental alat berat di Cikarang</div></li>
-      <li class="reveal"><div class="desc"><b>Contract lifecycle &amp; permit screening</b> — manajemen kontrak + penyaringan kelayakan izin.</div><div class="who">Sebuah perusahaan otomotif</div></li>
-      <li class="reveal"><div class="desc"><b>Integrasi data &amp; BI lintas-sistem</b> — pipeline dari ERP ke visualisasi BI.</div><div class="who">Sebuah perusahaan otomotif</div></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===== FOUNDER ===== -->
-<section class="band dark">
-  <div class="wrap">
-    <p class="eyebrow reveal">06 — Founder</p>
-    <div class="founder">
-      <div class="role reveal">Founder<br>&amp; Principal</div>
-      <div class="reveal d1">
-        <h3>Muhamad Muslih</h3>
-        <p>Product Manager yang membangun dengan AI agent setiap hari — dengan latar produk digital &amp; otomasi di sektor mobility, fintech, banking, SaaS, dan otomotif. Aidia adalah perpanjangan dari praktik itu. Profil lengkap: <a href="https://muslih.aidia.uk">muslih.aidia.uk</a>.</p>
+    <!-- 2 · OVERVIEW -->
+    <section class="slide light">
+      <div class="inner">
+        <p class="eyebrow r">01 — Overview</p>
+        <div class="two">
+          <div class="k r">Who we are</div>
+          <div class="r d1">
+            <h2 class="big">An AI consulting practice that makes AI <span class="accent">actually work</span>.</h2>
+            <p class="lede">Many businesses already have — or want — AI, but get stuck: results they can't trust, outputs that still need manual checking, systems that aren't stable. Aidia steps in to find out <strong>why</strong>, then builds AI systems that deliver real, measurable operational results.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===== CONTACT ===== -->
-<section class="band light" id="contact">
-  <div class="wrap">
-    <p class="eyebrow reveal">07 — Contact</p>
-    <h2 class="big reveal" style="margin-bottom:40px">Mari bicara soal pekerjaan yang bisa <span class="accent">diselesaikan</span>.</h2>
-    <div class="contact reveal d1">
-      <a href="https://aidia.uk"><span class="lbl">Web</span><span>aidia.uk →</span></a>
-      <a href="mailto:hello@aidia.uk"><span class="lbl">Email</span><span>hello@aidia.uk →</span></a>
-      <a href="https://wa.me/6281310069661"><span class="lbl">WhatsApp</span><span>+62 813-1006-9661 →</span></a>
-      <a href="https://linkedin.com/in/muhamad-muslihh"><span class="lbl">LinkedIn</span><span>muhamad-muslihh →</span></a>
-    </div>
-    <p class="legalnote reveal">Untuk kebutuhan procurement / vendor registration (badan hukum, NPWP, NIB, alamat), detail entitas tersedia atas permintaan.</p>
-  </div>
-</section>
+    <!-- 3 · BELIEF -->
+    <section class="slide darker">
+      <div class="inner">
+        <p class="eyebrow r">02 — What we believe</p>
+        <p class="belief r d1"><span class="q">"</span>Most AI hands you a chat window. This hands you a <span class="accent">workforce</span>.<span class="q">"</span></p>
+      </div>
+    </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="foot">
-  <div class="wrap">
-    <p class="big">Most AI hands you a chat window. This hands you a workforce.</p>
-    <div class="row">
-      <span class="wm">aid<i>i</i>a</span>
-      <span class="upd">Company Profile · Last updated <b>25 Juni 2026</b></span>
-    </div>
-  </div>
-</footer>
+    <!-- 4 · WHAT WE DO -->
+    <section class="slide light">
+      <div class="inner">
+        <p class="eyebrow r">03 — What we do</p>
+        <div class="caps">
+          <div class="cap r"><span class="num">01</span><h3>AI Systems &amp; Automation</h3><p>Automate repetitive work across functions — reporting, intelligence, data, system integration.</p></div>
+          <div class="cap r d1"><span class="num">02</span><h3>AI Agent Orchestration</h3><p>Orchestrate multiple AI agents to run workflows, not just answer questions.</p></div>
+          <div class="cap r d2"><span class="num">03</span><h3>AI Finance — "AI CFO"</h3><p>Financial visibility &amp; reconciliation; a track being validated via the presisi.ai prototype.</p></div>
+          <div class="cap r d3"><span class="num">04</span><h3>AI Diagnosis &amp; Problem-Framing</h3><p>Audit existing AI systems to find the root cause of weak ROI before any solution is chosen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · APPROACH -->
+    <section class="slide dark">
+      <div class="inner">
+        <p class="eyebrow r">04 — Our approach</p>
+        <div class="appr">
+          <div class="a r d1"><p class="t">Outcome-oriented</p><p>You pay for results, not hours or licenses. "Priced like an outcome. Honest about the limits."</p></div>
+          <div class="a r d2"><p class="t">Human-in-the-loop</p><p>"Nothing is replaced. Everything is accelerated — and a human always reviews."</p></div>
+          <div class="a r d3"><p class="t">Honest about limits</p><p>If a problem needs expertise outside our core, we say so upfront.</p></div>
+        </div>
+        <div class="flow r d4"><b>Audit</b><span class="arr">→</span><b>Build</b><span class="arr">→</span><b>Go live</b></div>
+      </div>
+    </section>
+
+    <!-- 6 · SELECTED WORK -->
+    <section class="slide light">
+      <div class="inner">
+        <p class="eyebrow r">05 — Selected work</p>
+        <p class="subh r">Aidia's own work &amp; properties</p>
+        <div class="plist">
+          <a class="it r" href="https://aidia.uk"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">aidia.uk</span><p class="ds">Aidia's main hub — the "AI Department as a Service" positioning.</p></span><span class="lk">aidia.uk →</span></a>
+          <a class="it r" href="https://lab.aidia.uk"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">Aidia Lab</span><p class="ds">Published research desk; flagship study "AI Finance Department" with transparent methodology &amp; sources.</p></span><span class="lk">lab.aidia.uk →</span></a>
+          <a class="it r" href="https://learn.aidia.uk"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">Aidia Academy</span><p class="ds">Course "Claude Code Mastery — with LEAD": 4 modules / 18 lessons, bilingual EN/ID.</p></span><span class="lk">learn.aidia.uk →</span></a>
+          <a class="it r" href="https://bangmarbot.github.io/ai-agency-ladder/"><span class="st live"><span class="dot"></span>Live</span><span class="bd"><span class="nm">AI Agency Ladder</span><p class="ds">Field-note: from one AI assistant to orchestrating an agent squad (5 stages).</p></span><span class="lk">View →</span></a>
+          <div class="it"><span class="st proto"><span class="dot"></span>Prototype</span><span class="bd"><span class="nm">presisi.ai</span><p class="ds">An "AI CFO" read-only — connects to Mekari Jurnal → natural-language finance Q&amp;A, every number traceable. Built with a partner, in validation.</p></span><span class="lk">&nbsp;</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · CLIENT ENGAGEMENTS -->
+    <section class="slide dark">
+      <div class="inner">
+        <p class="eyebrow r">06 — Client engagements</p>
+        <p class="subh r">Client work · anonymized</p>
+        <div class="plist">
+          <div class="it r"><span class="bd"><span class="nm">Sales reporting automation</span><p class="ds">Daily reports that were manual now ship automatically overnight.</p></span><span class="who">A national EV company</span></div>
+          <div class="it r"><span class="bd"><span class="nm">Community sentiment intelligence</span><p class="ds">1,729 mentions analyzed in ~1 hour → 8 product insights + 4 critical alerts, every recommendation with an owner &amp; deadline.</p></span><span class="who">A leading EV brand · Indonesia</span></div>
+          <div class="it r"><span class="bd"><span class="nm">Operational diagnosis</span><p class="ds">Mapped the inquiry → SO → invoice flow + a 3-phase digitalization roadmap.</p></span><span class="who">Heavy-equipment rental · Cikarang</span></div>
+          <div class="it r"><span class="bd"><span class="nm">Contract lifecycle &amp; permit screening</span><p class="ds">Contract management + permit-eligibility screening.</p></span><span class="who">An automotive company</span></div>
+          <div class="it r"><span class="bd"><span class="nm">Data &amp; BI integration</span><p class="ds">Cross-system pipeline from ERP to BI visualization.</p></span><span class="who">An automotive company</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · FOUNDER -->
+    <section class="slide light">
+      <div class="inner">
+        <p class="eyebrow r">07 — Founder</p>
+        <div class="founder">
+          <div class="role r" style="color:var(--on-light-mut)">Founder<br>&amp; Principal</div>
+          <div class="r d1">
+            <h3 style="color:var(--on-light)">Muhamad Muslih</h3>
+            <p style="color:var(--on-light-soft)">A Product Manager who builds with AI agents every day — with a background in digital products &amp; automation across mobility, fintech, banking, SaaS, and automotive. Aidia is an extension of that practice. Full profile: <a href="https://muslih.aidia.uk">muslih.aidia.uk</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · CONTACT -->
+    <section class="slide dark">
+      <div class="inner">
+        <p class="eyebrow r">08 — Contact</p>
+        <h2 class="big r d1">Let's talk about work that actually <span class="accent">gets done</span>.</h2>
+        <div class="contact r d2" style="border-top-color:var(--hair-dark)">
+          <a href="https://aidia.uk" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">Web</span><span>aidia.uk →</span></a>
+          <a href="mailto:hello@aidia.uk" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">Email</span><span>hello@aidia.uk →</span></a>
+          <a href="https://wa.me/6281310069661" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">WhatsApp</span><span>+62 813-1006-9661 →</span></a>
+          <a href="https://linkedin.com/in/muhamad-muslihh" style="border-bottom-color:var(--hair-dark)"><span class="lbl" style="color:var(--on-dark-mut)">LinkedIn</span><span>muhamad-muslihh →</span></a>
+        </div>
+        <p class="legalnote r d3" style="color:var(--on-dark-mut)">For procurement / vendor registration (legal entity, NPWP, business address), entity details are available on request. &nbsp;·&nbsp; Last updated 25 June 2026.</p>
+      </div>
+    </section>
+
+  </div><!-- /track -->
+</div><!-- /deck -->
+
+<!-- chrome -->
+<button class="edge left" data-no-advance aria-label="Previous" id="prev">‹</button>
+<button class="edge right" data-no-advance aria-label="Next" id="next">›</button>
+<div class="ind" data-no-advance>
+  <div class="dots" id="dots"></div>
+  <span class="count" id="count">1 / 9</span>
+</div>
 
 <script>
 (function(){
-  var head=document.getElementById('head');
-  function onScroll(){ head.classList.toggle('solid', window.scrollY>48); }
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  var deck=document.getElementById('deck'),track=document.getElementById('track'),
+      progress=document.getElementById('progress'),countEl=document.getElementById('count'),
+      dotsEl=document.getElementById('dots');
+  var slides=Array.prototype.slice.call(track.querySelectorAll('.slide'));
+  var n=slides.length, i=0;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var revs=document.querySelectorAll('.reveal');
-  if(reduce||!('IntersectionObserver'in window)){revs.forEach(function(e){e.classList.add('in');});return;}
-  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.14});
-  revs.forEach(function(e){io.observe(e);});
+
+  // build dots
+  slides.forEach(function(_,idx){
+    var b=document.createElement('button');
+    b.className='dot-btn'+(idx===0?' on':''); b.type='button';
+    b.setAttribute('aria-label','Go to slide '+(idx+1));
+    b.addEventListener('click',function(e){e.stopPropagation();go(idx);});
+    dotsEl.appendChild(b);
+  });
+  var dotBtns=Array.prototype.slice.call(dotsEl.children);
+
+  function render(){
+    track.style.transform='translateY(-'+(i*100)+'svh)';
+    slides.forEach(function(s,idx){s.classList.toggle('active',idx===i);});
+    dotBtns.forEach(function(d,idx){d.classList.toggle('on',idx===i);});
+    countEl.textContent=(i+1)+' / '+n;
+    progress.style.width=((i+1)/n*100)+'%';
+    // reset scroll of the freshly-shown slide
+    slides[i].scrollTop=0;
+  }
+  function go(t){ i=Math.max(0,Math.min(n-1,t)); render(); }
+  function next(){ go(i+1); }
+  function prev(){ go(i-1); }
+
+  // click / tap to advance (left 22% = back); ignore interactive bits
+  deck.addEventListener('click',function(e){
+    if(e.target.closest('a,button,[data-no-advance]')) return;
+    if(e.clientX < window.innerWidth*0.22) prev(); else next();
+  });
+
+  // keyboard
+  window.addEventListener('keydown',function(e){
+    if(e.key===' '||e.key==='Enter'||e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();next();}
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='Backspace'||e.key==='PageUp'){e.preventDefault();prev();}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(n-1);}
+  });
+
+  // edge buttons
+  document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();next();});
+  document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();prev();});
+
+  // touch swipe (vertical-friendly: horizontal swipe navigates; vertical lets content scroll)
+  var ts=null;
+  deck.addEventListener('touchstart',function(e){var t=e.touches[0];ts={x:t.clientX,y:t.clientY};},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(!ts) return; var t=e.changedTouches[0];
+    var dx=t.clientX-ts.x, dy=t.clientY-ts.y; ts=null;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ if(dx<0) next(); else prev(); }
+    else if(Math.abs(dy)>70 && Math.abs(dy)>Math.abs(dx)){
+      // only page-flip on swipe when the current slide isn't scrolled
+      var s=slides[i];
+      if(s.scrollHeight<=s.clientHeight+4){ if(dy<0) next(); else prev(); }
+    }
+  },{passive:true});
+
+  // wheel — flip pages when slide content fits; otherwise let it scroll
+  var wlock=false;
+  deck.addEventListener('wheel',function(e){
+    var s=slides[i], fits=s.scrollHeight<=s.clientHeight+4;
+    if(!fits) return; // allow native scroll on tall slides
+    if(Math.abs(e.deltaY)<8) return;
+    if(wlock) return; wlock=true; setTimeout(function(){wlock=false;},680);
+    if(e.deltaY>0) next(); else prev();
+  },{passive:true});
+
+  render();
 })();
 </script>
 </body>
