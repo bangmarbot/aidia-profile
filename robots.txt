@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://profile.aidia.uk/sitemap.xml
