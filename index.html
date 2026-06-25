@@ -143,7 +143,36 @@ a.cc:hover{border-color:var(--accent)}
 .edge{position:fixed;top:0;bottom:0;width:14vw;max-width:130px;z-index:25;border:0;background:transparent;color:#fff;font-size:32px;font-family:var(--disp);font-weight:300;opacity:0;cursor:pointer;transition:opacity .2s;mix-blend-mode:difference}
 .edge:hover{opacity:.55}
 .edge.left{left:0} .edge.right{right:0}
-@media(max-width:680px){.edge{display:none}.brand{top:20px;left:22px}.slide .inner{padding:88px 24px}}
+@media(max-width:680px){
+  .edge{display:none}
+  .brand{top:18px;left:20px;font-size:18px}
+  .slide .inner{padding:74px 22px 56px}
+  .eyebrow{margin-bottom:24px}
+  h1.hero{font-size:clamp(40px,11vw,54px);margin-bottom:22px}
+  .hero-sub{font-size:18px}
+  .meta{margin-top:34px;gap:8px 22px}
+  .tap-cue{margin-top:38px}
+  h2.big{font-size:clamp(28px,8vw,40px);margin-bottom:22px}
+  .lead-h{font-size:clamp(25px,7.2vw,34px);margin-bottom:24px}
+  .belief{font-size:clamp(38px,12vw,54px);margin-bottom:22px}
+  .belief-sub{font-size:18px}
+  .cap{padding:16px 0}
+  .cap h3{font-size:18.5px}
+  .cap p{font-size:14.5px}
+  .appr{margin-bottom:28px}
+  .appr .a{padding:20px 20px}
+  .appr .a .t{font-size:18.5px;margin-bottom:8px}
+  .appr .a p{font-size:14.5px}
+  .flow b{font-size:20px}
+  .subh{margin-bottom:14px}
+  .cards2{gap:12px}
+  .cc{padding:20px 22px}
+  .cc h4{font-size:19px}
+  .cc p{font-size:14.5px;margin-bottom:12px}
+  .situ .s{padding:18px 0}
+  .situ .s p{font-size:19px}
+  .ind{bottom:18px}
+}
 
 @media(prefers-reduced-motion:reduce){
   .track{transition:none}.r{opacity:1;transform:none;transition:none}.progress{transition:none}
